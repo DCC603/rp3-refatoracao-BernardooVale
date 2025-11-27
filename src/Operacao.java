@@ -1,23 +1,22 @@
+import java.util.Map;
+
 public class Operacao {
 
     private char tipo;
     private double valor;
+
+    private static final Map<Character, String> mapTipos = Map.of(
+            'd', "Depósito",
+            's', "Saque"
+    );
 
     public Operacao(char tipo, double valor) {
         this.tipo = tipo;
         this.valor = valor;
     }
 
-    // TODO(#6) REFATORAR: Muita responsabilidade para mesma classe
     public String getTipo() {
-        switch (this.tipo) {
-            case 'd':
-                return "Depósito";
-            case 's':
-                return "Saque";
-            default:
-                return null;
-        }
+        return Operacao.mapTipos.get(this.tipo);
     }
 
     public String toString() {
